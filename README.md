@@ -24,6 +24,10 @@ The system consists of:
 - Node.js 18+ and npm/yarn
 - Python 3.10+
 - [Ollama](https://ollama.com/) installed locally
+    - Install on MacOS (Using Homebrew)
+    ```sh
+    $ brew install ollama
+    ```
 
 ### Setup
 
