@@ -29,7 +29,7 @@ The system consists of:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/ai-council.git
+   git clone https://github.com/ninjonas/ai-council.git
    cd ai-council
    ```
 
