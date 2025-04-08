@@ -18,16 +18,9 @@ const AgentDiscussion: React.FC<AgentDiscussionProps> = ({
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (messagesEndRef.current && messagesContainerRef.current) {
-      // Use scrollIntoView on the end reference, but within the container's context
-      const container = messagesContainerRef.current;
-      const scrollElement = messagesEndRef.current;
-      
+    if (messagesEndRef.current) {
       // Scroll the container to the bottom smoothly
-      container.scrollTo({
-        top: scrollElement.offsetTop,
-        behavior: "smooth",
-      });
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
 
@@ -51,7 +44,7 @@ const AgentDiscussion: React.FC<AgentDiscussionProps> = ({
       
       <div 
         ref={messagesContainerRef}
-        className="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth"
+        className="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth bg-gray-50 rounded-lg shadow-inner"
       >
         {messages.length === 0 && !isLoading && !isDiscussing ? (
           <div className="h-full flex items-center justify-center text-gray-500">

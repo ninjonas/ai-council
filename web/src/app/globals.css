@@ -2,70 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Force browser reset */
+/* Reset and box-sizing */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Root variables for consistent theming */
 :root {
-  /* Color palette */
-  --primary: #4f46e5; /* indigo-600 */
-  --primary-dark: #4338ca; /* indigo-700 */
-  --primary-light: #818cf8; /* indigo-400 */
-  --secondary: #8b5cf6; /* violet-500 */
-  --success: #10b981; /* emerald-500 */
-  --warning: #f59e0b; /* amber-500 */
-  --danger: #ef4444; /* red-500 */
-  --neutral: #6b7280; /* gray-500 */
-  --neutral-light: #f3f4f6; /* gray-100 */
-  --neutral-dark: #1f2937; /* gray-800 */
-  
-  /* Sizing */
-  --border-radius-sm: 0.25rem;
-  --border-radius: 0.5rem;
-  --border-radius-lg: 1rem;
+  --primary: #2563eb; /* blue-600 */
+  --primary-light: #93c5fd; /* blue-300 */
+  --primary-dark: #1d4ed8; /* blue-700 */
+  --secondary: #4b5563; /* gray-600 */
+  --background: #f9fafb; /* gray-50 */
+  --text-primary: #111827; /* gray-900 */
+  --text-secondary: #6b7280; /* gray-500 */
+  --border-color: #e5e7eb; /* gray-200 */
+  --radius: 0.5rem;
 }
 
+/* Body styling */
 body {
-  color: var(--neutral-dark);
-  background-color: #f9fafb; /* gray-50 */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  line-height: 1.6;
 }
 
-/* Force critical UI styles */
-.shadow-md {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.rounded-lg {
-  border-radius: 0.5rem !important;
+::-webkit-scrollbar-track {
+  background: var(--background);
 }
 
-.bg-white {
-  background-color: white !important;
+::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: var(--radius);
 }
 
-/* Animation for thinking state */
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
 }
 
-.animate-pulse {
-  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+/* Utility classes for cards */
+.card {
+  @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
 }
 
-/* Message animations */
-.message-appear {
-  animation: fadeIn 0.5s ease-out forwards;
+/* Utility classes for buttons */
+.btn {
+  @apply px-4 py-2 rounded-md font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
 }
 
+.btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+}
+
+.btn-secondary {
+  @apply bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500;
+}
+
+.btn-outline {
+  @apply border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 focus:ring-blue-500;
+}
+
+/* Input fields */
+.input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500;
+}
+
+/* Section headers */
+.section-header {
+  @apply text-2xl font-bold text-gray-800 mb-4;
+}
+
+/* Custom animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -77,78 +92,6 @@ body {
   }
 }
 
-/* Card styles */
-.card {
-  @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
-}
-
-/* Button styles */
-.btn {
-  @apply px-4 py-2 rounded-md font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
-}
-
-.btn-primary {
-  @apply bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500;
-}
-
-.btn-secondary {
-  @apply bg-violet-500 text-white hover:bg-violet-600 focus:ring-violet-400;
-}
-
-.btn-danger {
-  @apply bg-red-500 text-white hover:bg-red-600 focus:ring-red-400;
-}
-
-.btn-outline {
-  @apply border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 focus:ring-indigo-500;
-}
-
-/* Input styles */
-.input {
-  @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c5c5c5;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #a3a3a3;
-}
-
-/* Agent message styles */
-.agent-message {
-  @apply relative rounded-lg p-4 mb-4 border-l-4 shadow-sm;
-}
-
-.agent-thinking {
-  @apply bg-gray-100 border-gray-300;
-}
-
-/* Agent colors - can be assigned dynamically based on agent ID */
-.agent-color-1 { @apply border-indigo-500; }
-.agent-color-2 { @apply border-violet-500; }
-.agent-color-3 { @apply border-blue-500; }
-.agent-color-4 { @apply border-cyan-500; }
-.agent-color-5 { @apply border-emerald-500; }
-.agent-color-6 { @apply border-amber-500; }
-
-/* Consensus output styling */
-.consensus-container {
-  @apply bg-white border border-gray-200 rounded-lg shadow-md p-6;
-}
-
-.consensus-header {
-  @apply text-xl font-semibold text-gray-800 mb-4 pb-3 border-b border-gray-200;
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
 }

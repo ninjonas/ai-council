@@ -21,7 +21,7 @@ const QueryInput: React.FC<QueryInputProps> = ({
   isLoading,
 }) => {
   return (
-    <form onSubmit={onSubmit} className="bg-white p-8 rounded-xl shadow-lg border border-gray-100" style={{backgroundColor: 'white'}}>
+    <form onSubmit={onSubmit} className="bg-white p-8 rounded-xl shadow-lg border border-gray-200 space-y-6">
       <div className="mb-6">
         <label
           htmlFor="systemInstruction"
@@ -78,15 +78,7 @@ const QueryInput: React.FC<QueryInputProps> = ({
       <div className="flex space-x-4">
         <button
           type="submit"
-          className="px-6 py-3 rounded-lg text-white font-medium transition-all duration-200"
-          style={{
-            padding: '0.75rem 1.5rem',
-            borderRadius: '0.5rem',
-            backgroundColor: isLoading ? '#93c5fd' : '#2563eb',
-            color: 'white',
-            fontWeight: '500',
-            cursor: isLoading ? 'not-allowed' : 'pointer',
-          }}
+          className="btn btn-primary"
           disabled={isLoading}
         >
           {isLoading ? (
@@ -96,7 +88,6 @@ const QueryInput: React.FC<QueryInputProps> = ({
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                style={{height: '1rem', width: '1rem', marginRight: '0.5rem'}}
               >
                 <circle
                   className="opacity-25"
@@ -121,16 +112,7 @@ const QueryInput: React.FC<QueryInputProps> = ({
         <button
           type="button"
           onClick={onReset}
-          className="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 bg-white hover:bg-gray-50 
-                   font-medium transition-all duration-200 hover:shadow-md"
-          style={{
-            padding: '0.75rem 1.5rem',
-            borderRadius: '0.5rem',
-            border: '1px solid #d1d5db',
-            backgroundColor: 'white',
-            color: '#374151',
-            fontWeight: '500',
-          }}
+          className="btn btn-outline"
           disabled={isLoading}
         >
           {UI_CONSTANTS.RESET_BUTTON}
