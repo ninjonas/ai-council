@@ -40,3 +40,11 @@ export const AGENT_CONSTANTS = {
     "ethical": "⚖️"
   }
 };
+
+export const THEME_CONSTANTS = {
+  LIGHT_MODE: "light",
+  DARK_MODE: "dark",
+  LIGHT_ICON: "☀️",
+  DARK_ICON: "🌙",
+  THEME_KEY: "ai-council-theme"
+};

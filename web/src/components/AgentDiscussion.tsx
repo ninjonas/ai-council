@@ -35,29 +35,29 @@ const AgentDiscussion: React.FC<AgentDiscussionProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md h-[600px] flex flex-col">
-      <div className="p-4 border-b border-gray-200">
-        <h2 className="text-xl font-semibold text-gray-800">
+    <div className="card h-[600px] flex flex-col">
+      <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+        <h2 className="text-xl font-semibold">
           {UI_CONSTANTS.AGENT_SECTION_TITLE}
         </h2>
       </div>
       
       <div 
         ref={messagesContainerRef}
-        className="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth bg-gray-50 rounded-lg shadow-inner"
+        className="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth bg-gray-50 dark:bg-gray-800 rounded-lg shadow-inner"
       >
         {messages.length === 0 && !isLoading && !isDiscussing ? (
-          <div className="h-full flex items-center justify-center text-gray-500">
+          <div className="h-full flex items-center justify-center text-gray-500 dark:text-gray-400">
             <p>Submit a query to start a discussion between AI agents</p>
           </div>
         ) : null}
 
         {isLoading && (
-          <div className="flex items-center p-3 bg-gray-50 rounded-lg animate-pulse">
+          <div className="flex items-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg animate-pulse">
             <div className="mr-3 text-2xl">{AGENT_CONSTANTS.DEFAULT_AGENT_AVATAR}</div>
             <div>
-              <div className="h-2 bg-gray-300 rounded w-24 mb-2"></div>
-              <div className="h-2 bg-gray-300 rounded w-64"></div>
+              <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-24 mb-2"></div>
+              <div className="h-2 bg-gray-300 dark:bg-gray-600 rounded w-64"></div>
             </div>
           </div>
         )}
@@ -72,13 +72,13 @@ const AgentDiscussion: React.FC<AgentDiscussionProps> = ({
               {getAgentAvatar(message.agentName)}
             </div>
             <div className="flex-grow">
-              <div className="font-medium text-blue-700 mb-1">
+              <div className="font-medium mb-1" style={{ color: "var(--primary)" }}>
                 {message.agentName}
               </div>
-              <div className="prose prose-sm max-w-none text-gray-700">
+              <div className="prose prose-sm max-w-none" style={{ color: "var(--text-primary)" }}>
                 <ReactMarkdown>{message.content}</ReactMarkdown>
               </div>
-              <div className="text-xs text-gray-500 mt-1">
+              <div className="text-xs mt-1" style={{ color: "var(--text-secondary)" }}>
                 {new Date(message.timestamp).toLocaleTimeString()}
               </div>
             </div>
@@ -86,9 +86,9 @@ const AgentDiscussion: React.FC<AgentDiscussionProps> = ({
         ))}
 
         {isDiscussing && (
-          <div className="flex items-center p-3 bg-blue-50 rounded-lg animate-pulse">
+          <div className="flex items-center p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg animate-pulse">
             <div className="mr-3 text-2xl">💭</div>
-            <div className="text-blue-700">
+            <div style={{ color: "var(--primary)" }}>
               {UI_CONSTANTS.THINKING_MESSAGE}
             </div>
           </div>

@@ -1,6 +1,6 @@
-import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import '../styles/globals.css' // Import the global CSS
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +19,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </head>
-      <body className={`${inter.className} h-full bg-gray-50 antialiased`}>
+      <body className={`${inter.className} h-full bg-background text-text-primary antialiased`}>
         <div className="min-h-full flex flex-col">
           {children}
         </div>

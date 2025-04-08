@@ -3,7 +3,7 @@ MODEL_NAME = "llama3:8b"  # Model to use with Ollama
 
 # Agent and discussion settings
 MAX_DISCUSSION_ROUNDS = 3
-MAX_REFERENCE_LENGTH = 5000  # Maximum length of reference context to include
+MAX_REFERENCE_LENGTH = 8000  # Maximum length of reference context to include
 DEFAULT_TIMEOUT = 30  # Seconds to wait for model response
 
 # System prompts
