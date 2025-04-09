@@ -75,13 +75,61 @@ class Agent:
         # Combine all reference content
         if all_content:
             combined = "\n\n".join(all_content)
-            # Truncate if too long
+            # Apply intelligent content reduction if needed
             if len(combined) > MAX_REFERENCE_LENGTH:
-                logger.warning(f"Reference content for agent {self.id} exceeds limit. Truncating.")
-                combined = combined[:MAX_REFERENCE_LENGTH] + "...[content truncated]"
+                logger.warning(f"Reference content for agent {self.id} exceeds limit. Applying intelligent reduction.")
+                combined = self._reduce_content(combined, MAX_REFERENCE_LENGTH)
             
             self.reference_content = combined
             logger.info(f"Loaded {len(reference_files)} reference files for agent {self.id}")
+    
+    def _reduce_content(self, content: str, max_length: int) -> str:
+        """
+        Intelligently reduce content size while maintaining readability
+        
+        Args:
+            content: The original content text
+            max_length: Maximum allowed length
+        
+        Returns:
+            Reduced content that fits within max_length
+        """
+        if len(content) <= max_length:
+            return content
+            
+        # Strategy 1: Keep headers and first sentences of paragraphs
+        paragraphs = content.split('\n\n')
+        reduced_paragraphs = []
+        
+        remaining_chars = max_length - 100  # Reserve some space for truncation notice
+        
+        for para in paragraphs:
+            # Always include headers (lines starting with #, ##, etc.)
+            if para.lstrip().startswith('#'):
+                if len(para) <= remaining_chars:
+                    reduced_paragraphs.append(para)
+                    remaining_chars -= len(para) + 2  # +2 for the '\n\n'
+                else:
+                    break
+            # For regular paragraphs, include only the first 1-2 sentences
+            else:
+                sentences = para.split('. ')
+                if sentences:
+                    # Take first sentence, or first two if they're short
+                    if len(sentences[0]) < 100 and len(sentences) > 1:
+                        shortened = sentences[0] + '. ' + sentences[1] + '.'
+                    else:
+                        shortened = sentences[0] + ('.' if not sentences[0].endswith('.') else '')
+                    
+                    if len(shortened) <= remaining_chars:
+                        reduced_paragraphs.append(shortened)
+                        remaining_chars -= len(shortened) + 2
+                    else:
+                        # If we can't fit even one sentence, we're done
+                        break
+        
+        result = '\n\n'.join(reduced_paragraphs)
+        return result + "\n\n[Content intelligently reduced to fit model context limits. Only headers and key sentences are included.]"
     
     def _extract_pdf_content(self, filepath: str) -> str:
         """Extract text content from a PDF file"""
