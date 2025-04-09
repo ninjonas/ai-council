@@ -9,11 +9,13 @@ DEFAULT_TIMEOUT = 30  # Seconds to wait for model response
 # System prompts
 BASE_SYSTEM_PROMPT = """You are an AI agent participating in a discussion with other AI agents. 
 Your goal is to collaborate with them to address the user's query effectively.
-Be concise and clear in your communications while staying true to your character and expertise."""
+Be concise and clear in your communications while staying true to your character and expertise.
+Outputs should be in Markdown format where applicable."""
 
 CONSENSUS_PROMPT = """Based on the discussion between all agents, please provide a final consensus response 
 that addresses the original query. Integrate the key insights and perspectives shared by all agents.
-Be concise, practical, and ensure the response is comprehensive and directly answers the user's query."""
+Be concise, practical, and ensure the response is comprehensive and directly answers the user's query.
+Outputs should be in Markdown format where applicable."""
 
 # File handling
 SUPPORTED_REFERENCE_FORMATS = [".pdf", ".md", ".txt"]

@@ -3,14 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  /* Reset and box-sizing */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  /* Root variables for consistent theming */
+  /* Root variables for consistent theming - essential for your color system */
   :root {
     --primary: #2563eb; /* blue-600 */
     --primary-light: #93c5fd; /* blue-300 */
@@ -25,7 +18,7 @@
     --radius: 0.5rem;
   }
 
-  /* Dark mode variables */
+  /* Dark mode variables - essential for theme switching */
   .dark {
     --primary: #3b82f6; /* blue-500 */
     --primary-light: #60a5fa; /* blue-400 */
@@ -39,110 +32,27 @@
     --card-border: #374151; /* gray-700 */
   }
 
-  /* Body styling */
+  /* Basic body styling */
   body {
     font-family: 'Inter', sans-serif;
     background-color: var(--background);
     color: var(--text-primary);
     line-height: 1.6;
   }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: var(--background);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--primary-light);
-    border-radius: var(--radius);
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
-  }
 }
 
 @layer components {
-  /* Utility classes for cards */
+  /* Only keeping essential component styles that use CSS variables */
   .card {
     @apply rounded-lg shadow-md p-6 border;
     background-color: var(--card-background);
     border-color: var(--card-border);
   }
 
-  /* Utility classes for buttons */
-  .btn {
-    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
-  }
-
-  .btn-primary {
-    @apply bg-primary text-white hover:bg-primary-dark focus:ring-primary-light;
-  }
-
-  .btn-secondary {
-    @apply bg-secondary text-white hover:bg-gray-700 focus:ring-gray-500;
-  }
-
-  .btn-outline {
-    @apply border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 focus:ring-primary;
-  }
-
-  /* Input fields */
   .input {
     @apply w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary;
     background-color: var(--card-background);
     color: var(--text-primary);
     border-color: var(--border-color);
-  }
-
-  /* Section headers */
-  .section-header {
-    @apply text-2xl font-bold mb-4;
-    color: var(--text-primary);
-  }
-
-  /* Dark mode toggle */
-  .dark-mode-toggle {
-    @apply p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary;
-    background-color: var(--card-background);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-  }
-}
-
-@layer utilities {
-  /* Custom animations */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .fade-in {
-    animation: fadeIn 0.5s ease-out forwards;
-  }
-
-  @keyframes messageAppear {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .message-appear {
-    animation: messageAppear 0.3s ease-out forwards;
   }
 }
