@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './src/**/*.{js,ts,jsx,tsx}',
-    './src/app/**/*.{js,ts,jsx,tsx}',
-    './src/components/**/*.{js,ts,jsx,tsx}',
+    './web/**/*.{js,ts,jsx,tsx}',
+    './web/app/**/*.{js,ts,jsx,tsx}',
+    './web/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -26,7 +26,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'), // Add this if you're using prose classes
-  ],
+  plugins: [],
 }
