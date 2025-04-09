@@ -62,7 +62,7 @@ class DiscussionManager:
             # Initial round - each agent responds to the query
             for agent in agents:
                 # Generate agent response
-                system_prompt = agent.get_system_prompt(request.system_instruction)
+                system_prompt = agent.get_system_prompt(discussion.system_instruction)
                 messages = [{"role": "user", "content": request.query}]
                 
                 response = await self.ollama_service.generate_response(
@@ -93,7 +93,7 @@ class DiscussionManager:
                     messages = self._format_messages_for_agent(discussion, agent.id)
                     
                     # Generate agent response
-                    system_prompt = agent.get_system_prompt(request.system_instruction)
+                    system_prompt = agent.get_system_prompt(discussion.system_instruction)
                     response = await self.ollama_service.generate_response(
                         model=MODEL_NAME,
                         system_prompt=system_prompt,
