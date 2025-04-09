@@ -33,6 +33,7 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
       className="dark-mode-toggle transition-all duration-300"
       aria-label={`Switch to ${theme === THEME_CONSTANTS.LIGHT_MODE ? 'dark' : 'light'} mode`}
+      style={{ backgroundColor: "var(--background)" }}
     >
       {theme === THEME_CONSTANTS.LIGHT_MODE ? THEME_CONSTANTS.DARK_ICON : THEME_CONSTANTS.LIGHT_ICON}
     </button>

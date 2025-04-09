@@ -58,7 +58,7 @@ class AgentManager:
                 await agent.initialize()
                 
                 self.agents[agent_id] = agent
-                logger.info(f"Loaded agent: {agent_config.name}")
+                logger.info(f"Loaded agent: '{agent.config.name}', id: {agent_id}, max_tokens: {agent_config.max_tokens}, temperature: {agent_config.temperature}")
             except Exception as e:
                 logger.error(ERROR_AGENT_CONFIG.format(str(e)))
     

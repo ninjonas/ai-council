@@ -78,7 +78,7 @@ const QueryInput: React.FC<QueryInputProps> = ({
       <div className="flex space-x-4">
         <button
           type="submit"
-          className="btn btn-primary"
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           disabled={isLoading}
         >
           {isLoading ? (
@@ -112,7 +112,7 @@ const QueryInput: React.FC<QueryInputProps> = ({
         <button
           type="button"
           onClick={onReset}
-          className="btn btn-outline"
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           disabled={isLoading}
         >
           {UI_CONSTANTS.RESET_BUTTON}
