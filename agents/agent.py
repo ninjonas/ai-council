@@ -137,7 +137,8 @@ class Agent:
         
         # Add agent's specific system prompt if available
         if self.config.system_prompt:
-            prompts.append(self.config.system_prompt)
+            prompts.append(f"""## Agent Specific System Prompt
+{self.config.system_prompt}""")
         
         # Add user system instruction if available
         if user_system_instruction:
