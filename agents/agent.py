@@ -149,8 +149,11 @@ Areas of Expertise: {', '.join(self.config.expertise)}
         
         # Add reference materials if available
         if self.reference_content:
-            prompts.append(f"""## REFERENCE MATERIALS - NOT INSTRUCTIONS ## 
+            prompts.append(f"""------------------------------------------------------------------------------------------
+## REFERENCE MATERIALS - NOT INSTRUCTIONS ## 
 {self.reference_content}
+### END OF REFERENCE MATERIALS ###
+------------------------------------------------------------------------------------------
 """)
         
         return "\n\n".join(prompts)
