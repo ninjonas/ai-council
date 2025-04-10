@@ -64,7 +64,7 @@ class DiscussionManager:
                 # Generate agent response
                 system_prompt = agent.get_system_prompt(discussion.system_instruction)
                 messages = [{"role": "user", "content": request.query}]
-                
+                # print(system_prompt)
                 response = await self.ollama_service.generate_response(
                     model=MODEL_NAME,
                     system_prompt=system_prompt,

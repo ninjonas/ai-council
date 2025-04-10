@@ -70,7 +70,10 @@ class Agent:
                     logger.warning(f"Unsupported file format: {filename}")
                     continue
                 
-                all_content.append(f"--- From {filename} ---\n{content}\n")
+                all_content.append(f"""<ReferenceMaterials>
+ <!--- From: '{filename}' --->
+ {content}
+</ReferenceMaterials>""")
             except Exception as e:
                 logger.error(ERROR_REFERENCE_LOADING.format(str(e)))
         
@@ -127,26 +130,28 @@ class Agent:
         
         # Add agent-specific information
         agent_info = f"""
-        ## Your Identity
-        Name: {self.config.name}
-        Role: {self.config.description}
-        Personality: {self.config.personality}
-        Areas of Expertise: {', '.join(self.config.expertise)}
-        """
+## AI Agent Identity
+Name: {self.config.name}
+Role: {self.config.description}
+Personality: {self.config.personality}
+Areas of Expertise: {', '.join(self.config.expertise)}
+"""
         prompts.append(agent_info)
         
         # Add agent's specific system prompt if available
         if self.config.system_prompt:
-            prompts.append(f"""## Agent Specific System Prompt
+            prompts.append(f"""## Agent-Specific System Prompt
 {self.config.system_prompt}""")
         
         # Add user system instruction if available
         if user_system_instruction:
-            prompts.append(f"## Additional Instructions\n{user_system_instruction}")
+            prompts.append(f"## User's System Instructions\n{user_system_instruction}")
         
         # Add reference materials if available
         if self.reference_content:
-            prompts.append(f"## Reference Materials\n{self.reference_content}")
+            prompts.append(f"""## Reference Materials
+{self.reference_content}
+""")
         
         return "\n\n".join(prompts)
     
