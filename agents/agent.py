@@ -9,6 +9,7 @@ import fitz  # PyMuPDF
 from models import AgentConfig, AgentMessage
 from constants import (
     BASE_SYSTEM_PROMPT, 
+    CLOSING_SYSTEM_PROMPT,
     SUPPORTED_REFERENCE_FORMATS, 
     MAX_REFERENCE_LENGTH,
     ERROR_REFERENCE_LOADING
@@ -155,6 +156,8 @@ Areas of Expertise: {', '.join(self.config.expertise)}
 ### END OF REFERENCE MATERIALS ###
 ------------------------------------------------------------------------------------------
 """)
+            
+            prompts.append(CLOSING_SYSTEM_PROMPT)
         
         return "\n\n".join(prompts)
     
